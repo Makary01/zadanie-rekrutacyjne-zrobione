@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paperwork__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Paperwork</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Paperwork__c.Type__c</field>
+            <operation>equals</operation>
+            <value>Cost confirmation</value>
+        </filterItems>
+        <filterItems>
+            <field>Paperwork__c.Opportunity__r.StageName</field>
+            <operation>notContain</operation>
+            <value>Proposal/Price Quote, Negotiation/Review, Closed Won, Closed Lost</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Opportunity__c</field>
+            <operation>equals</operation>
+            <valueField>Paperwork__c.Opportunity__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Paperwork__c</referenceTo>
+    <relationshipLabel>Costs</relationshipLabel>
+    <relationshipName>Costs</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

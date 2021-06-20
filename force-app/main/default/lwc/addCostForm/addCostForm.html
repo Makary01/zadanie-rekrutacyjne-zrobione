@@ -1,0 +1,105 @@
+<template>
+  <lightning-record-edit-form
+    object-api-name={accountLookup.childObjectApiName}
+  >
+    <div class="slds-m-horizontal_small">
+      <!-- Cost name -->
+      <div class="slds-m-bottom_small">
+        <label for={costName.fieldId}>{costName.fieldLabel}</label>
+        <lightning-input
+          name={costName.name}
+          id={costName.fieldId}
+          variant={costName.variant}
+          type={costName.type}
+          required={costName.required}
+          placeholder={costName.placeholder}
+          min={costName.min}
+          max={costName.max}
+          disabled={disabled}
+          onchange={handleFormInputChange}
+        >
+        </lightning-input>
+      </div>
+
+      <!-- Account lookup -->
+      <div class="slds-m-bottom_small">
+        <label for={accountLookup.fieldId}>{accountLookup.fieldLabel}</label>
+        <lightning-input-field
+          name={accountLookup.name}
+          id={accountLookup.fieldId}
+          variant={accountLookup.variant}
+          required={accountLookup.required}
+          field-name={accountLookup.targetFieldApiName}
+          value={accountLookup.value}
+          disabled={disabled}
+          onchange={handleFormInputChange}
+        >
+        </lightning-input-field>
+      </div>
+
+      <!-- Paperwork select -->
+      <div class="slds-m-bottom_small">
+        <label for={paperworkSelect.fieldId}
+          >{paperworkSelect.fieldLabel}</label
+        >
+        <lightning-combobox
+          name={paperworkSelect.name}
+          id={paperworkSelect.fieldId}
+          variant={paperworkSelect.variant}
+          placeholder={paperworkSelect.placeholder}
+          options={paperworkOptions}
+          required={paperworkSelect.required}
+          disabled={disabled}
+          onchange={handleFormInputChange}
+        >
+        </lightning-combobox>
+      </div>
+
+      <!-- Cost amount -->
+      <div class="slds-m-bottom_small">
+        <label for={costAmount.fieldId}>{costAmount.fieldLabel}</label>
+        <lightning-input
+          name={costAmount.name}
+          id={costAmount.fieldId}
+          variant={costAmount.variant}
+          type={costAmount.type}
+          formatter={costAmount.formatter}
+          required={costAmount.required}
+          placeholder={costAmount.placeholder}
+          step={costAmount.step}
+          min={costAmount.min}
+          disabled={disabled}
+          onchange={handleFormInputChange}
+        >
+        </lightning-input>
+      </div>
+    </div>
+
+    <!-- Clear button -->
+    <lightning-layout class="slds-border_top">
+      <lightning-layout-item class="slds-p-left_small slds-p-top_small">
+        <lightning-button
+          label={clearButton.label}
+          title={clearButton.title}
+          icon-name={clearButton.iconName}
+          onclick={clearButton.onclick}
+        ></lightning-button>
+      </lightning-layout-item>
+      <!-- Save button -->
+      <lightning-layout-item class="slds-p-left_small slds-p-top_small">
+        <lightning-button
+          variant={saveButton.variant}
+          label={saveButton.label}
+          title={saveButton.title}
+          icon-name={saveButton.iconName}
+          onclick={save}
+          disabled={disabled}
+        ></lightning-button>
+      </lightning-layout-item>
+      <!-- Message -->
+      <lightning-layout-item class="slds-p-left_small slds-p-top_small">
+        <p class="slds-m-top_xx-small" style={msgStyle}>{msg}</p>
+      </lightning-layout-item>
+    </lightning-layout>
+  </lightning-record-edit-form>
+</template>
